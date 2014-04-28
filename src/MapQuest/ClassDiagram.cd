@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Geocoding.MapQuest.MapQuestAddress">
+    <Position X="4.25" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAIAACACAAAAAAABBAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>MapQuestAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Geocoding.MapQuest.MapQuestAddressComponent">
+    <Position X="0.75" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAEAAAAEAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapQuestAddressComponent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Geocoding.MapQuest.MapQuestGeocoder">
+    <Position X="0.75" Y="5.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Geocoding.MapQuest.MapQuestGeocoder.RequestState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MapQuestGeocoder.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gIBAAAAACAAgCAGAERIAgDQggAgLQGAAAAAEACCAAAA=</HashCode>
+      <FileName>MapQuestGeocoder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Geocoding.MapQuest.MapQuestGeocodingException">
+    <Position X="3" Y="5.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapQuestGeocodingException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Geocoding.MapQuest.MapQuestAddressType" Collapsed="true">
+    <Position X="0.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAACAAAAA4AYlAIAABIgAYAAAAAAAAAAAKAARA=</HashCode>
+      <FileName>MapQuestAddressType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Geocoding.MapQuest.MapQuestStatus">
+    <Position X="3.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAQAAIAAAAAAAAAAAAAAAEAABAIAAAAA=</HashCode>
+      <FileName>MapQuestStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -93,6 +93,10 @@
       <Project>{2E608F4E-29F7-4AC3-922F-23D971312CAE}</Project>
       <Name>Google</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MapQuest\MapQuest.csproj">
+      <Project>{b37fc059-5e9e-4893-994a-64d835d2a54f}</Project>
+      <Name>MapQuest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Microsoft\Microsoft.csproj">
       <Project>{74BCB608-4674-452F-A50C-7EE61AC47EAF}</Project>
       <Name>Microsoft</Name>
