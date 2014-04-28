@@ -58,9 +58,6 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AssemblyInfoCommon.cs">
-      <Link>Properties\AssemblyInfoCommon.cs</Link>
-    </Compile>
     <Compile Include="BingAddress.cs" />
     <Compile Include="BingGeocodingException.cs" />
     <Compile Include="BingMapsGeocoder.cs" />

@@ -47,9 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\AssemblyInfoCommon.cs">
-      <Link>Properties\AssemblyInfoCommon.cs</Link>
-    </Compile>
     <Compile Include="OAuthBase.cs" />
     <Compile Include="Properties\AssemblyVersion.cs" />
     <Compile Include="YahooAddress.cs" />

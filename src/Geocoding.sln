@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{891021E5-7521-4F93-9946-B7B630DF3192}"
 	ProjectSection(SolutionItems) = preProject
 		..\build-with-tests.bat = ..\build-with-tests.bat
@@ -29,6 +27,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yahoo", "Yahoo\Yahoo.csproj", "{B2863E87-3983-46EF-8B3E-37A4475ECA13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft", "Microsoft\Microsoft.csproj", "{74BCB608-4674-452F-A50C-7EE61AC47EAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B59E8640-AAE1-4447-AB9B-5CB3AD7A4549}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
