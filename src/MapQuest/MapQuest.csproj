@@ -55,6 +55,7 @@
     <Compile Include="MapQuestAddressType.cs" />
     <Compile Include="MapQuestGeocoder.cs" />
     <Compile Include="MapQuestGeocodingException.cs" />
+    <Compile Include="MapQuestSideOfStreet.cs" />
     <Compile Include="MapQuestStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

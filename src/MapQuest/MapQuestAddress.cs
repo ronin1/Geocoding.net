@@ -1,47 +1,23 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
 {
+	/// <summary>
+	/// MapQuest address obj.
+	/// <see cref="http://open.mapquestapi.com/geocoding/"/>
+	/// </summary>
 	public class MapQuestAddress : Address
 	{
-		readonly MapQuestAddressType type;
-		readonly MapQuestAddressComponent[] components;
-		readonly bool isPartialMatch;
+		public MapQuestAddressType Type { get; set; }
+		public MapQuestSideOfStreet SideOfStreet { get; set; }
 
-		public MapQuestAddressType Type
+		public MapQuestAddress(string formattedAddress, Location coordinates)
+			: base(formattedAddress, coordinates, "MapQuest")
 		{
-			get { return type; }
-		}
-
-		public MapQuestAddressComponent[] Components
-		{
-			get { return components; }
-		}
-
-		public bool IsPartialMatch
-		{
-			get { return isPartialMatch; }
-		}
-
-		public MapQuestAddressComponent this[MapQuestAddressType type]
-		{
-			get { return Components.FirstOrDefault(c => c.Types.Contains(type)); }
-		}
-
-		public MapQuestAddress(MapQuestAddressType type, string formattedAddress, MapQuestAddressComponent[] components, Location coordinates, bool isPartialMatch)
-			: base(formattedAddress, coordinates, "Google")
-		{
-			if (components == null)
-				throw new ArgumentNullException("components");
-
-			if (components.Length < 1)
-				throw new ArgumentException("Value cannot be empty.", "components");
-
-			this.type = type;
-			this.components = components;
-			this.isPartialMatch = isPartialMatch;
+			
 		}
 	}
 }

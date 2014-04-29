@@ -9,17 +9,17 @@ namespace Geocoding
 		readonly Location coordinates;
 		readonly string provider;
 
-		public string FormattedAddress
+		public virtual string FormattedAddress
 		{
 			get { return formattedAddress ?? ""; }
 		}
 
-		public Location Coordinates
+		public virtual Location Coordinates
 		{
 			get { return coordinates; }
 		}
 
-		public string Provider
+		public virtual string Provider
 		{
 			get { return provider ?? ""; }
 		}

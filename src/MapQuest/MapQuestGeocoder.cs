@@ -19,8 +19,6 @@ namespace Geocoding.MapQuest
 	{
 		readonly string apiKey;
 
-		const string keyMessage = "Only one of BusinessKey or ApiKey should be set on the MapQuestGeocoder.";
-
 		public MapQuestGeocoder(string apiKey)
 		{
 			if (string.IsNullOrWhiteSpace(apiKey))
@@ -317,7 +315,8 @@ namespace Geocoding.MapQuest
 				bool isPartialMatch;
 				bool.TryParse((string)nav.Evaluate("string(partial_match)"), out isPartialMatch);
 
-				yield return new MapQuestAddress(type, formattedAddress, components, coordinates, isPartialMatch);
+				//yield return new MapQuestAddress(type, formattedAddress, components, coordinates, isPartialMatch);
+				yield return new MapQuestAddress(formattedAddress, coordinates) { Type = type };
 			}
 		}
 
@@ -363,34 +362,11 @@ namespace Geocoding.MapQuest
 		/// </remarks>
 		private MapQuestAddressType EvaluateType(string type)
 		{
-			switch (type)
-			{
-				case "street_address": return MapQuestAddressType.StreetAddress;
-				case "route": return MapQuestAddressType.Route;
-				case "intersection": return MapQuestAddressType.Intersection;
-				case "political": return MapQuestAddressType.Political;
-				case "country": return MapQuestAddressType.Country;
-				case "administrative_area_level_1": return MapQuestAddressType.AdministrativeAreaLevel1;
-				case "administrative_area_level_2": return MapQuestAddressType.AdministrativeAreaLevel2;
-				case "administrative_area_level_3": return MapQuestAddressType.AdministrativeAreaLevel3;
-				case "colloquial_area": return MapQuestAddressType.ColloquialArea;
-				case "locality": return MapQuestAddressType.Locality;
-				case "sublocality": return MapQuestAddressType.SubLocality;
-				case "neighborhood": return MapQuestAddressType.Neighborhood;
-				case "premise": return MapQuestAddressType.Premise;
-				case "subpremise": return MapQuestAddressType.Subpremise;
-				case "postal_code": return MapQuestAddressType.PostalCode;
-				case "natural_feature": return MapQuestAddressType.NaturalFeature;
-				case "airport": return MapQuestAddressType.Airport;
-				case "park": return MapQuestAddressType.Park;
-				case "point_of_interest": return MapQuestAddressType.PointOfInterest;
-				case "post_box": return MapQuestAddressType.PostBox;
-				case "street_number": return MapQuestAddressType.StreetNumber;
-				case "floor": return MapQuestAddressType.Floor;
-				case "room": return MapQuestAddressType.Room;
+			MapQuestAddressType t;
+			if (string.IsNullOrWhiteSpace(type) || !Enum.TryParse(type, true, out t))
+				t = MapQuestAddressType.stop; //default value
 
-				default: return MapQuestAddressType.Unknown;
-			}
+			return t;
 		}
 
 		protected class RequestState
