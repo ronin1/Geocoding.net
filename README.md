@@ -16,13 +16,7 @@ See latest [release notes](https://github.com/chadly/Geocoding.net/wiki/Release-
 
 ##Installation
 
-Install via nuget:
-
-```
-Install-Package Geocoding.net
-```
-
-Or download the [latest release](https://github.com/chadly/Geocoding.net/releases) and add a reference to `Geocoding.dll` in your project.
+Pull from Master and build it yourself ;)
 
 ##Example Usage
 
