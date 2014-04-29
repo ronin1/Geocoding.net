@@ -42,7 +42,7 @@
       AssemblyFileVersion="$(versionString)" />
 	</Target>-->
 
-	<Target Name="CleanVersionFiles" AfterTargets="Clean">
+	<!--<Target Name="CleanVersionFiles" AfterTargets="Clean">
 		<Delete Files="Properties\AssemblyVersion.cs" />
-	</Target>
+	</Target>-->
 </Project>
