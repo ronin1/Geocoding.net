@@ -3,43 +3,57 @@ using System.Text;
 
 namespace Geocoding
 {
+	/// <summary>
+	/// Most basic and generic form of address.
+	/// Just the full address string and a lat/long
+	/// </summary>
 	public abstract class Address
 	{
-		readonly string formattedAddress;
-		readonly Location coordinates;
-		readonly string provider;
+		string formattedAddress = string.Empty;
+		Location coordinates;
+		string provider = string.Empty;
+
+		public Address(string formattedAddress, Location coordinates, string provider)
+		{
+			FormattedAddress = formattedAddress;
+			Coordinates = coordinates;
+			Provider = provider;
+		}
 
 		public virtual string FormattedAddress
 		{
-			get { return formattedAddress ?? ""; }
+			get { return formattedAddress; }
+			set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new ArgumentException("FormattedAddress is null or blank");
+
+				formattedAddress = value.Trim();
+			}
 		}
 
 		public virtual Location Coordinates
 		{
 			get { return coordinates; }
+			set
+			{
+				if (value == null)
+					throw new ArgumentNullException("Coordinates");
+
+				coordinates = value;
+			}
 		}
 
 		public virtual string Provider
 		{
-			get { return provider ?? ""; }
-		}
+			get { return provider; }
+			protected set
+			{
+				if (string.IsNullOrWhiteSpace(value))
+					throw new ArgumentException("Provider can not be null or blank");
 
-		public Address(string formattedAddress, Location coordinates, string provider)
-		{
-			formattedAddress = (formattedAddress ?? "").Trim();
-
-			if (string.IsNullOrEmpty(formattedAddress))
-				throw new ArgumentNullException("formattedAddress");
-
-			if (coordinates == null)
-				throw new ArgumentNullException("coordinates");
-
-			if (provider == null)
-				throw new ArgumentNullException("provider");
-
-			this.formattedAddress = formattedAddress;
-			this.coordinates = coordinates;
-			this.provider = provider;
+				provider = value;
+			}
 		}
 
 		public virtual Distance DistanceBetween(Address address)

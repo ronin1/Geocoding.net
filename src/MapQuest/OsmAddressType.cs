@@ -5,15 +5,15 @@ namespace Geocoding.MapQuest
 	/// <remarks>
 	/// http://code.google.com/apis/maps/documentation/geocoding/#Types
 	/// </remarks>
-	public enum MapQuestAddressType
+	public enum OsmAddressType
 	{
 		/// <summary>
 		/// Stop: default
 		/// </summary>
-		stop,
+		s,
 		/// <summary>
 		/// Via
 		/// </summary>
-		via,
+		v,
 	}
 }

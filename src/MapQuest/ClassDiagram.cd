@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Geocoding.MapQuest.MapQuestAddress">
-    <Position X="4.25" Y="1.25" Width="2" />
+    <Position X="4" Y="1.25" Width="2" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAIAAAAAAQAAIIgAAAAQQIAhAAAAAA=</HashCode>
       <FileName>MapQuestAddress.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -41,7 +41,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Geocoding.MapQuest.MapQuestGeocodingException">
-    <Position X="3.75" Y="4" Width="2.5" />
+    <Position X="6.5" Y="1.25" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -51,18 +51,25 @@
       <FileName>MapQuestGeocodingException.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="Geocoding.MapQuest.MapQuestAddressType">
+  <Enum Name="Geocoding.MapQuest.OsmAddressType">
     <Position X="0.75" Y="6.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MapQuestAddressType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAA=</HashCode>
+      <FileName>OsmAddressType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Geocoding.MapQuest.MapQuestStatus">
-    <Position X="3.75" Y="6.25" Width="1.5" />
+    <Position X="4" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAQAAIAAAAAAAAAAAAAAAEAABAIAAAAA=</HashCode>
       <FileName>MapQuestStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Geocoding.MapQuest.OsmQuality">
+    <Position X="6" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAAAAAAAAAAAAAgAAAAIAABkAIAAAAAAAAACAAAAA=</HashCode>
+      <FileName>OsmQuality.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

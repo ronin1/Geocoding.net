@@ -9,15 +9,85 @@ namespace Geocoding.MapQuest
 	/// MapQuest address obj.
 	/// <see cref="http://open.mapquestapi.com/geocoding/"/>
 	/// </summary>
-	public class MapQuestAddress : Address
+	public class MapQuestAddress : ParsedAddress
 	{
-		public MapQuestAddressType Type { get; set; }
-		public MapQuestSideOfStreet SideOfStreet { get; set; }
+		protected MapQuestAddress()
+			: this("unknown", new Location(0, 0))
+		{
+		}
 
 		public MapQuestAddress(string formattedAddress, Location coordinates)
 			: base(formattedAddress, coordinates, "MapQuest")
 		{
-			
 		}
+
+		[JsonProperty("latLng")]
+		public override Location Coordinates
+		{
+			get { return base.Coordinates; }
+			set { base.Coordinates = value; }
+		}
+
+		[JsonProperty("street")]
+		public override string Street { get; set; }
+
+		[JsonProperty("adminArea5")]
+		public override string City { get; set; }
+
+		[JsonProperty("adminArea4")]
+		public override string County { get; set; }
+
+		[JsonProperty("adminArea3")]
+		public override string State { get; set; }
+
+		[JsonProperty("adminArea1")]
+		public override string Country { get; set; }
+
+		[JsonProperty("postalCode")]
+		public virtual string PostCode { get; set; }
+
+		/// <summary>
+		/// Type of location
+		/// </summary>
+		[JsonProperty("type")]
+		public OsmAddressType Type { get; set; }
+
+		/// <summary>
+		/// Grandularity code of quality/acuracy guarantee
+		/// <see cref="http://open.mapquestapi.com/geocoding/geocodequality.html#granularity"/>
+		/// </summary>
+		[JsonProperty("geocodeQuality")]
+		public OsmQuality Quality { get; set; }
+
+		/// <summary>
+		/// Text string comparable, sortable score
+		/// <see cref="http://open.mapquestapi.com/geocoding/geocodequality.html#granularity"/>
+		/// </summary>
+		[JsonProperty("geocodeQualityCode")]
+		public string Confidence { get; set; }
+
+		/// <summary>
+		/// Identifies the closest road to the address for routing purposes.
+		/// </summary>
+		[JsonProperty("linkId")]
+		public long LinkId { get; set; }
+
+		/// <summary>
+		/// Which side of the street this address is in
+		/// </summary>
+		[JsonProperty("sideOfStreet")]
+		public OsmSideOfStreet SideOfStreet { get; set; }
+
+		/// <summary>
+		/// Url to a mapquest map
+		/// </summary>
+		[JsonProperty("mapUrl")]
+		public Uri MapUrl { get; set; }
+
+		[JsonProperty("adminArea1Type")]
+		public string CountryLabel { get; set; }
+
+		[JsonProperty("adminArea3Type")]
+		public string StateLabel { get; set; }
 	}
 }

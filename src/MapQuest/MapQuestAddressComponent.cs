@@ -4,11 +4,11 @@ namespace Geocoding.MapQuest
 {
 	public class MapQuestAddressComponent
 	{
-		public MapQuestAddressType[] Types { get; private set; }
+		public OsmAddressType[] Types { get; private set; }
 		public string LongName { get; private set; }
 		public string ShortName { get; private set; }
 
-		public MapQuestAddressComponent(MapQuestAddressType[] types, string longName, string shortName)
+		public MapQuestAddressComponent(OsmAddressType[] types, string longName, string shortName)
 		{
 			if (types == null)
 				throw new ArgumentNullException("types");

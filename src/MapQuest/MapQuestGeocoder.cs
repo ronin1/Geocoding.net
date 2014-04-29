@@ -303,7 +303,7 @@ namespace Geocoding.MapQuest
 			{
 				XPathNavigator nav = nodes.Current;
 
-				MapQuestAddressType type = EvaluateType((string)nav.Evaluate("string(type)"));
+				OsmAddressType type = EvaluateType((string)nav.Evaluate("string(type)"));
 				string formattedAddress = (string)nav.Evaluate("string(formatted_address)");
 
 				var components = ParseComponents(nav.Select("address_component")).ToArray();
@@ -335,7 +335,7 @@ namespace Geocoding.MapQuest
 			}
 		}
 
-		private IEnumerable<MapQuestAddressType> ParseComponentTypes(XPathNodeIterator nodes)
+		private IEnumerable<OsmAddressType> ParseComponentTypes(XPathNodeIterator nodes)
 		{
 			while (nodes.MoveNext())
 				yield return EvaluateType(nodes.Current.InnerXml);
@@ -360,11 +360,11 @@ namespace Geocoding.MapQuest
 		/// <remarks>
 		/// http://code.google.com/apis/maps/documentation/geocoding/#Types
 		/// </remarks>
-		private MapQuestAddressType EvaluateType(string type)
+		private OsmAddressType EvaluateType(string type)
 		{
-			MapQuestAddressType t;
+			OsmAddressType t;
 			if (string.IsNullOrWhiteSpace(type) || !Enum.TryParse(type, true, out t))
-				t = MapQuestAddressType.stop; //default value
+				t = OsmAddressType.s; //default value
 
 			return t;
 		}

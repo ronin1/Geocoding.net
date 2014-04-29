@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Geocoding.MapQuest
 {
-	public enum MapQuestSideOfStreet
+	public enum OsmSideOfStreet
 	{
 		/// <summary>
 		/// None: default
