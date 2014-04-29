@@ -5,7 +5,7 @@ namespace Geocoding.MapQuest
 	/// <remarks>
 	/// http://code.google.com/apis/maps/documentation/geocoding/#Types
 	/// </remarks>
-	public enum OsmAddressType
+	public enum OsmLocationType
 	{
 		/// <summary>
 		/// Stop: default

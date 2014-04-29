@@ -50,11 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OsmAddress.cs" />
-    <Compile Include="OsmAddressType.cs" />
+    <Compile Include="OsmInfo.cs" />
+    <Compile Include="OsmLocation.cs" />
+    <Compile Include="OsmLocationType.cs" />
     <Compile Include="MapQuestGeocoder.cs" />
     <Compile Include="OsmException.cs" />
+    <Compile Include="OsmOptions.cs" />
+    <Compile Include="OsmProvidedLocation.cs" />
     <Compile Include="OsmQuality.cs" />
+    <Compile Include="OsmResponse.cs" />
+    <Compile Include="OsmResult.cs" />
     <Compile Include="OsmSideOfStreet.cs" />
     <Compile Include="OsmResponseStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

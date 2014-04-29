@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Geocoding.MapQuest.OsmAddress">
+  <Class Name="Geocoding.MapQuest.OsmLocation">
     <Position X="2.75" Y="0.5" Width="2" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAgAAAAAACAAAABIAAAAAEQAIIIgAAAAAQIAhAAAAAA=</HashCode>
-      <FileName>OsmAddress.cs</FileName>
+      <HashCode>AAgAAAAAACAAAABIAAAAAEQAIIIwAAAAAQIAhAAAAAA=</HashCode>
+      <FileName>OsmLocation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Geocoding.MapQuest.MapQuestGeocoder">
@@ -34,11 +34,11 @@
       <FileName>OsmException.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="Geocoding.MapQuest.OsmAddressType">
+  <Enum Name="Geocoding.MapQuest.OsmLocationType">
     <Position X="2.75" Y="5.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAA=</HashCode>
-      <FileName>OsmAddressType.cs</FileName>
+      <FileName>OsmLocationType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Geocoding.MapQuest.OsmResponseStatus">

@@ -9,16 +9,16 @@ namespace Geocoding.MapQuest
 	/// MapQuest address obj.
 	/// <see cref="http://open.mapquestapi.com/geocoding/"/>
 	/// </summary>
-	public class OsmAddress : ParsedAddress
+	public class OsmLocation : ParsedAddress
 	{
-		protected OsmAddress()
+		protected OsmLocation()
 			: this("unknown", new Location(0, 0))
 		{
 		}
-
-		public OsmAddress(string formattedAddress, Location coordinates)
+		public OsmLocation(string formattedAddress, Location coordinates)
 			: base(formattedAddress, coordinates, "MapQuest")
 		{
+			DisplayCoordinates = coordinates;
 		}
 
 		[JsonProperty("latLng")]
@@ -27,6 +27,9 @@ namespace Geocoding.MapQuest
 			get { return base.Coordinates; }
 			set { base.Coordinates = value; }
 		}
+
+		[JsonProperty("displayLatLng")]
+		public virtual Location DisplayCoordinates { get; set; }
 
 		[JsonProperty("street")]
 		public override string Street { get; set; }
@@ -50,7 +53,7 @@ namespace Geocoding.MapQuest
 		/// Type of location
 		/// </summary>
 		[JsonProperty("type")]
-		public OsmAddressType Type { get; set; }
+		public OsmLocationType Type { get; set; }
 
 		/// <summary>
 		/// Grandularity code of quality/acuracy guarantee
