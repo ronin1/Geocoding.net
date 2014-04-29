@@ -17,30 +17,16 @@ namespace Geocoding.MapQuest
 	/// </remarks>
 	public class MapQuestGeocoder : IGeocoder, IAsyncGeocoder
 	{
-		string apiKey;
-		BusinessKey businessKey;
+		readonly string apiKey;
+
 		const string keyMessage = "Only one of BusinessKey or ApiKey should be set on the MapQuestGeocoder.";
 
-		public string ApiKey
+		public MapQuestGeocoder(string apiKey)
 		{
-			get { return apiKey; }
-			set
-			{
-				if (businessKey != null)
-					throw new InvalidOperationException(keyMessage);
-				apiKey = value;
-			}
-		}
+			if (string.IsNullOrWhiteSpace(apiKey))
+				throw new ArgumentException("apiKey can not be null or blank");
 
-		public BusinessKey BusinessKey
-		{
-			get { return businessKey; }
-			set
-			{
-				if (!String.IsNullOrEmpty(apiKey))
-					throw new InvalidOperationException(keyMessage);
-				businessKey = value;
-			}
+			this.apiKey = apiKey;
 		}
 
 		public WebProxy Proxy { get; set; }
@@ -55,28 +41,20 @@ namespace Geocoding.MapQuest
 				var builder = new StringBuilder();
 				builder.Append("https://maps.googleapis.com/maps/api/geocode/xml?{0}={1}&sensor=false");
 
-				if (!String.IsNullOrEmpty(Language))
+				if (!string.IsNullOrEmpty(Language))
 				{
 					builder.Append("&language=");
 					builder.Append(HttpUtility.UrlEncode(Language));
 				}
-
-				if (!String.IsNullOrEmpty(RegionBias))
+				if (!string.IsNullOrEmpty(RegionBias))
 				{
 					builder.Append("&region=");
 					builder.Append(HttpUtility.UrlEncode(RegionBias));
 				}
-
-				if (!String.IsNullOrEmpty(ApiKey))
+				if (!string.IsNullOrEmpty(apiKey))
 				{
 					builder.Append("&key=");
-					builder.Append(HttpUtility.UrlEncode(ApiKey));
-				}
-
-				if (BusinessKey != null)
-				{
-					builder.Append("&client=");
-					builder.Append(HttpUtility.UrlEncode(BusinessKey.ClientId));
+					builder.Append(HttpUtility.UrlEncode(apiKey));
 				}
 
 				if (BoundsBias != null)
@@ -90,14 +68,13 @@ namespace Geocoding.MapQuest
 					builder.Append(",");
 					builder.Append(BoundsBias.NorthEast.Longitude.ToString(CultureInfo.InvariantCulture));
 				}
-
 				return builder.ToString();
 			}
 		}
 
 		public IEnumerable<MapQuestAddress> Geocode(string address)
 		{
-			if (String.IsNullOrEmpty(address))
+			if (string.IsNullOrEmpty(address))
 				throw new ArgumentNullException("address");
 
 			HttpWebRequest request = BuildWebRequest("address", HttpUtility.UrlEncode(address));
@@ -120,7 +97,7 @@ namespace Geocoding.MapQuest
 
 		public Task<IEnumerable<MapQuestAddress>> GeocodeAsync(string address)
 		{
-			if (String.IsNullOrEmpty(address))
+			if (string.IsNullOrEmpty(address))
 				throw new ArgumentNullException("address");
 
 			HttpWebRequest request = BuildWebRequest("address", HttpUtility.UrlEncode(address));
@@ -129,7 +106,7 @@ namespace Geocoding.MapQuest
 
 		public Task<IEnumerable<MapQuestAddress>> GeocodeAsync(string address, CancellationToken cancellationToken)
 		{
-			if (String.IsNullOrEmpty(address))
+			if (string.IsNullOrEmpty(address))
 				throw new ArgumentNullException("address");
 
 			HttpWebRequest request = BuildWebRequest("address", HttpUtility.UrlEncode(address));
@@ -150,12 +127,12 @@ namespace Geocoding.MapQuest
 
 		private string BuildAddress(string street, string city, string state, string postalCode, string country)
 		{
-			return String.Format("{0} {1}, {2} {3}, {4}", street, city, state, postalCode, country);
+			return string.Format("{0} {1}, {2} {3}, {4}", street, city, state, postalCode, country);
 		}
 
 		private string BuildGeolocation(double latitude, double longitude)
 		{
-			return String.Format(CultureInfo.InvariantCulture, "{0},{1}", latitude, longitude);
+			return string.Format(CultureInfo.InvariantCulture, "{0},{1}", latitude, longitude);
 		}
 
 		private IEnumerable<MapQuestAddress> ProcessRequest(HttpWebRequest request)
@@ -289,12 +266,9 @@ namespace Geocoding.MapQuest
 
 		private HttpWebRequest BuildWebRequest(string type, string value)
 		{
-			string url = String.Format(ServiceUrl, type, value);
+			string url = string.Format(ServiceUrl, type, value);
 
-			if (BusinessKey != null)
-				url = BusinessKey.GenerateSignature(url);
-
-			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+			var req = WebRequest.Create(url) as HttpWebRequest;
 			req.Proxy = Proxy;
 			req.Method = "GET";
 			return req;

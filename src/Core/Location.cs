@@ -83,7 +83,7 @@ namespace Geocoding
 
 		public override string ToString()
 		{
-			return String.Format("{0}, {1}", latitude, longitude);
+			return string.Format("{0}, {1}", latitude, longitude);
 		}
 	}
 }

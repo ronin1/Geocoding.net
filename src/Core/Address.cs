@@ -28,7 +28,7 @@ namespace Geocoding
 		{
 			formattedAddress = (formattedAddress ?? "").Trim();
 
-			if (String.IsNullOrEmpty(formattedAddress))
+			if (string.IsNullOrEmpty(formattedAddress))
 				throw new ArgumentNullException("formattedAddress");
 
 			if (coordinates == null)
