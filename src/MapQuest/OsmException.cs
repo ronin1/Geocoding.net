@@ -2,22 +2,22 @@
 
 namespace Geocoding.MapQuest
 {
-	public class MapQuestGeocodingException : Exception
+	public class OsmException : Exception
 	{
 		const string defaultMessage = "There was an error processing the geocoding request. See Status or InnerException for more information.";
 
-		public MapQuestStatus Status { get; private set; }
+		public OsmResponseStatus Status { get; private set; }
 
-		public MapQuestGeocodingException(MapQuestStatus status)
+		public OsmException(OsmResponseStatus status)
 			: base(defaultMessage)
 		{
 			this.Status = status;
 		}
 
-		public MapQuestGeocodingException(Exception innerException)
+		public OsmException(Exception innerException)
 			: base(defaultMessage, innerException)
 		{
-			this.Status = MapQuestStatus.Error;
+			this.Status = OsmResponseStatus.ErrorUnknown;
 		}
 	}
 }

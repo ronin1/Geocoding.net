@@ -9,14 +9,14 @@ namespace Geocoding.MapQuest
 	/// MapQuest address obj.
 	/// <see cref="http://open.mapquestapi.com/geocoding/"/>
 	/// </summary>
-	public class MapQuestAddress : ParsedAddress
+	public class OsmAddress : ParsedAddress
 	{
-		protected MapQuestAddress()
+		protected OsmAddress()
 			: this("unknown", new Location(0, 0))
 		{
 		}
 
-		public MapQuestAddress(string formattedAddress, Location coordinates)
+		public OsmAddress(string formattedAddress, Location coordinates)
 			: base(formattedAddress, coordinates, "MapQuest")
 		{
 		}

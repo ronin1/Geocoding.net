@@ -1,72 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Geocoding.MapQuest.MapQuestAddress">
-    <Position X="4" Y="1.25" Width="2" />
+  <Class Name="Geocoding.MapQuest.OsmAddress">
+    <Position X="2.75" Y="0.5" Width="2" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAIAAAAAAQAAIIgAAAAQQIAhAAAAAA=</HashCode>
-      <FileName>MapQuestAddress.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Geocoding.MapQuest.MapQuestAddressComponent">
-    <Position X="0.75" Y="1.25" Width="2.25" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AgAAAAAAAAEAAAAEAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
-      <FileName>MapQuestAddressComponent.cs</FileName>
+      <HashCode>AAgAAAAAACAAAABIAAAAAEQAIIIgAAAAAQIAhAAAAAA=</HashCode>
+      <FileName>OsmAddress.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Geocoding.MapQuest.MapQuestGeocoder">
-    <Position X="0.75" Y="3.75" Width="2" />
+    <Position X="0.5" Y="0.75" Width="1.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <NestedTypes>
-      <Class Name="Geocoding.MapQuest.MapQuestGeocoder.RequestState" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>MapQuestGeocoder.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>gIBAAAAACAAgCAGAARAAACQggAgLQGAAAAAEACCAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MapQuestGeocoder.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Geocoding.MapQuest.MapQuestGeocodingException">
-    <Position X="6.5" Y="1.25" Width="2.5" />
+  <Class Name="Geocoding.MapQuest.OsmException">
+    <Position X="5.5" Y="0.5" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAEAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MapQuestGeocodingException.cs</FileName>
+      <FileName>OsmException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Geocoding.MapQuest.OsmAddressType">
-    <Position X="0.75" Y="6.75" Width="2" />
+    <Position X="2.75" Y="5.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAA=</HashCode>
       <FileName>OsmAddressType.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Geocoding.MapQuest.MapQuestStatus">
-    <Position X="4" Y="5.25" Width="1.5" />
+  <Enum Name="Geocoding.MapQuest.OsmResponseStatus">
+    <Position X="5.5" Y="3.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAQAAIAAAAAAAAAAAAAAAEAABAIAAAAA=</HashCode>
-      <FileName>MapQuestStatus.cs</FileName>
+      <HashCode>AAAAAAAAAAAACAAAIAAAAAAAAEAAAAAAACABAAAAAAA=</HashCode>
+      <FileName>OsmResponseStatus.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Geocoding.MapQuest.OsmQuality">
-    <Position X="6" Y="5" Width="1.5" />
+    <Position X="0.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QACAAAAAAAAAAAAAgAAAAIAABkAIAAAAAAAAACAAAAA=</HashCode>
       <FileName>OsmQuality.cs</FileName>
