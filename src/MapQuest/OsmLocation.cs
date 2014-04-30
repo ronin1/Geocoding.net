@@ -47,7 +47,7 @@ namespace Geocoding.MapQuest
 		public override string Country { get; set; }
 
 		[JsonProperty("postalCode")]
-		public virtual string PostCode { get; set; }
+		public override string PostCode { get; set; }
 
 		/// <summary>
 		/// Type of location
