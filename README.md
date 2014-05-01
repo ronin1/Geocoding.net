@@ -9,6 +9,7 @@ Includes a model and interface for communicating with three popular Geocoding pr
 This fork adds:
   
   * [MapQuest Open (OpenStreetMap)](http://open.mapquestapi.com/) - [docs](http://open.mapquestapi.com/geocoding/)
+  * Mono compatibility
   
 The API returns latitude/longitude coordinates and normalized address information.  This can be used to perform address validation, real time mapping of user-entered addresses, distance calculations, and much more.
 
