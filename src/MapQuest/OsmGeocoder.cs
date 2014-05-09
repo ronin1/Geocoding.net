@@ -22,6 +22,22 @@ namespace Geocoding.MapQuest
 		{
 			HttpWebRequest request = Send(f);
 			OsmResponse r = Parse(request);
+			if (r != null && !r.Results.IsNullOrEmpty())
+			{
+				foreach(OsmResult o in r.Results) 
+				{
+					if (o == null)
+						continue;
+
+					foreach(OsmLocation l in o.Locations) 
+					{
+						if (o.ProvidedLocation == null)
+							continue;
+
+						l.FormattedAddress = o.ProvidedLocation.Location;
+					}
+				}
+			}
 			return r;
 		}
 
