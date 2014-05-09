@@ -61,6 +61,7 @@ Bing [requires an API key](http://msdn.microsoft.com/en-us/library/ff428642.aspx
 
 You will need a [consumer secret and consumer key](http://developer.yahoo.com/boss/geo/BOSS_Signup.pdf) (PDF) for Yahoo.
 
+MapQuest OSM API requires a key. Sign up here: (http://developer.mapquest.com/web/products/open)
 
 ##How to Build from Source
 
