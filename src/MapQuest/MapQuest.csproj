@@ -50,6 +50,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OsmFormat.cs" />
+    <Compile Include="OsmGeocoder.cs" />
+    <Compile Include="OsmGeocodeRequest.cs" />
+    <Compile Include="OsmRequest.cs" />
     <Compile Include="OsmInfo.cs" />
     <Compile Include="OsmLocation.cs" />
     <Compile Include="OsmLocationType.cs" />

@@ -1,25 +1,52 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web;
-using System.Xml.XPath;
 
 namespace Geocoding.MapQuest
 {
 	/// <remarks>
 	/// <see cref="http://open.mapquestapi.com/geocoding/"/>
+	/// <seealso cref="http://developer.mapquest.com/"/>
 	/// </remarks>
 	public class MapQuestGeocoder : IGeocoder
 	{
+		readonly OsmGeocoder _osmlogic;
+		readonly string _key;
+
+		public MapQuestGeocoder(string key)
+		{
+			if (string.IsNullOrWhiteSpace(key))
+				throw new ArgumentException("key can not be null or blank");
+
+			_key = key;
+			_osmlogic = new OsmGeocoder();
+		}
+
 		public IEnumerable<Address> Geocode(string address)
 		{
-			throw new NotImplementedException();
+			if (string.IsNullOrWhiteSpace(address))
+				throw new ArgumentException("address can not be null or empty!");
+
+			var f = new OsmGeocodeRequest(_key, address) { };
+			OsmResponse res = _osmlogic.Geocode(f);
+			if (res != null && !res.Results.IsNullOrEmpty())
+			{
+				return from r in res.Results
+					   where r != null && !r.Locations.IsNullOrEmpty()
+					   from l in r.Locations
+					   where l != null
+					   let q = (int)l.Quality
+					   let c = string.IsNullOrWhiteSpace(l.Confidence) ? "ZZZZZZ" : l.Confidence
+					   orderby q ascending
+					   orderby c ascending
+					   select l;
+			}
+			else
+				return new Address[0];
 		}
 
 		public IEnumerable<Address> Geocode(string street, string city, string state, string postalCode, string country)
@@ -41,7 +68,8 @@ namespace Geocoding.MapQuest
 
 			string s = sb.ToString ().Trim ();
 			if (string.IsNullOrWhiteSpace (s))
-				throw new ArgumentException ("Concatinated input values can not be null or blank");
+				throw new ArgumentException ("Concatenated input values can not be null or blank");
+
 			if (s.Last () == ',')
 				s = s.Remove (s.Length - 1);
 
@@ -53,12 +81,12 @@ namespace Geocoding.MapQuest
 			if (location == null)
 				throw new ArgumentNullException ("location");
 
-			return ReverseGeocode (location.Latitude, location.Longitude);
+			throw new NotImplementedException();
 		}
 
 		public IEnumerable<Address> ReverseGeocode(double latitude, double longitude)
 		{
-			throw new NotImplementedException();
+			return ReverseGeocode(new Location(latitude, longitude));
 		}
 	}
 }
