@@ -17,14 +17,14 @@ See latest [release notes](https://github.com/chadly/Geocoding.net/wiki/Release-
 
 ##Installation
 
-Pull from Master and build it yourself ;)
+Pull from appropriate branch (Master if stability is required) and build it yourself.
 
 ##Example Usage
 
 ###Simple Example
 
 ```csharp
-IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "this-is-my-optional-google-api-key" };
+IGeocoder geocoder = new MapQuestGeocoder("this-is-my-required-mapquest-api-key");
 Address[] addresses = geocoder.Geocode("C");
 Console.WriteLine("Formatted: " + addresses[0].FormattedAddress); //Formatted: 1600 Pennslyvania Avenue Northwest, Presiden'ts Park, Washington, DC 20500, USA
 Console.WriteLine("Coordinates: " + addresses[0].Coordinates.Latitude + ", " + addresses[0].Coordinates.Longitude); //Coordinates: 38.8978378, -77.0365123
