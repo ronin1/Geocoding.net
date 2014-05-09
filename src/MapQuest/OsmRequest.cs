@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
@@ -12,7 +13,7 @@ namespace Geocoding.MapQuest
 	/// </summary>
 	public abstract class OsmRequest
 	{
-		public OsmRequest(string key) //output only, no need for default ctor
+		protected OsmRequest(string key) //output only, no need for default ctor
 		{
 			Key = key;
 		}
@@ -23,7 +24,7 @@ namespace Geocoding.MapQuest
 		/// A REQUIRED unique key to authorize use of the Routing Service.
 		/// <see cref="http://developer.mapquest.com/"/>
 		/// </summary>
-		[JsonProperty("key")]
+		[JsonIgnore]
 		public virtual string Key
 		{
 			get { return _key; }
@@ -39,13 +40,13 @@ namespace Geocoding.MapQuest
 		/// <summary>
 		/// Defaults to json
 		/// </summary>
-		[JsonProperty("inFormat", ItemConverterType=typeof(string))]
+		[JsonIgnore]
 		public virtual OsmFormat InputFormat { get; private set; }
 
 		/// <summary>
 		/// Defaults to json
 		/// </summary>
-		[JsonProperty("outFormat", ItemConverterType=typeof(string))]
+		[JsonIgnore]
 		public virtual OsmFormat OutputFormat { get; private set; }
 
 		///// <summary>
@@ -84,7 +85,66 @@ namespace Geocoding.MapQuest
 		/// <summary>
 		/// Optional name of JSONP callback method.
 		/// </summary>
-		[JsonProperty("callback")]
+		[JsonIgnore]
 		public virtual string JsonpCallBack { get; set; }
+
+		/// <summary>
+		/// We are using v1 of MapQuest OSM API
+		/// </summary>
+		protected static string BASE_PATH = @"http://open.mapquestapi.com/geocoding/v1/";
+
+		/// <summary>
+		/// The full path for the request
+		/// </summary>
+		[JsonIgnore]
+		public virtual Uri RequestUri
+		{
+			get
+			{
+				var sb = new StringBuilder(BASE_PATH);
+				sb.Append("batch?");
+				sb.AppendFormat("key={0}&", Key); //no need to escape this key, it is already escaped by MapQuest at generation
+
+				if (!string.IsNullOrWhiteSpace(JsonpCallBack))
+					sb.AppendFormat("callback={0}&", HttpUtility.UrlEncode(JsonpCallBack));
+
+				if (InputFormat != OsmFormat.json)
+					sb.AppendFormat("inFormat={0}&", InputFormat);
+
+				if (OutputFormat != OsmFormat.json)
+					sb.AppendFormat("outFormat={0}&", OutputFormat);
+
+				return new Uri(sb.ToString());
+			}
+		}
+
+		[JsonIgnore]
+		string _verb = "POST";
+		/// <summary>
+		/// Default request verb is POST for security and large batch payloads
+		/// </summary>
+		[JsonIgnore]
+		public virtual string RequestVerb
+		{
+			get { return _verb; }
+			protected set { _verb = string.IsNullOrWhiteSpace(value) ? "POST" : value.Trim().ToUpper(); }
+		}
+
+		/// <summary>
+		/// Request body if request verb is applicable (POST, PUT, etc)
+		/// </summary>
+		[JsonIgnore]
+		public virtual string RequestBody
+		{
+			get
+			{
+				return this.ToJSON();
+			}
+		}
+
+		public override string ToString()
+		{
+			return this.RequestBody;
+		}
 	}
 }

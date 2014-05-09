@@ -26,13 +26,8 @@ namespace Geocoding.MapQuest
 			_osmlogic = new OsmGeocoder();
 		}
 
-		public IEnumerable<Address> Geocode(string address)
+		IEnumerable<Address> HandleSingleResponse(OsmResponse res)
 		{
-			if (string.IsNullOrWhiteSpace(address))
-				throw new ArgumentException("address can not be null or empty!");
-
-			var f = new OsmGeocodeRequest(_key, address) { };
-			OsmResponse res = _osmlogic.Geocode(f);
 			if (res != null && !res.Results.IsNullOrEmpty())
 			{
 				return from r in res.Results
@@ -47,6 +42,16 @@ namespace Geocoding.MapQuest
 			}
 			else
 				return new Address[0];
+		}
+
+		public IEnumerable<Address> Geocode(string address)
+		{
+			if (string.IsNullOrWhiteSpace(address))
+				throw new ArgumentException("address can not be null or empty!");
+
+			var f = new OsmGeocodeRequest(_key, address) { };
+			OsmResponse res = _osmlogic.Execute(f);
+			return HandleSingleResponse(res);
 		}
 
 		public IEnumerable<Address> Geocode(string street, string city, string state, string postalCode, string country)
@@ -81,7 +86,9 @@ namespace Geocoding.MapQuest
 			if (location == null)
 				throw new ArgumentNullException ("location");
 
-			throw new NotImplementedException();
+			var f = new OsmReverseGeocodeRequest(_key, location);
+			OsmResponse res = _osmlogic.Execute(f);
+			return HandleSingleResponse(res);
 		}
 
 		public IEnumerable<Address> ReverseGeocode(double latitude, double longitude)

@@ -53,6 +53,7 @@
     <Compile Include="OsmFormat.cs" />
     <Compile Include="OsmGeocoder.cs" />
     <Compile Include="OsmGeocodeRequest.cs" />
+    <Compile Include="OsmLocationRequest.cs" />
     <Compile Include="OsmRequest.cs" />
     <Compile Include="OsmInfo.cs" />
     <Compile Include="OsmLocation.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="OsmQuality.cs" />
     <Compile Include="OsmResponse.cs" />
     <Compile Include="OsmResult.cs" />
+    <Compile Include="OsmReverseGeocodeRequest.cs" />
     <Compile Include="OsmSideOfStreet.cs" />
     <Compile Include="OsmResponseStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

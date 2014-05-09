@@ -56,14 +56,14 @@ namespace Geocoding.MapQuest
 		public OsmLocationType Type { get; set; }
 
 		/// <summary>
-		/// Grandularity code of quality/acuracy guarantee
+		/// Granularity code of quality/accuracy guarantee
 		/// <see cref="http://open.mapquestapi.com/geocoding/geocodequality.html#granularity"/>
 		/// </summary>
 		[JsonProperty("geocodeQuality")]
 		public OsmQuality Quality { get; set; }
 
 		/// <summary>
-		/// Text string comparable, sortable score
+		/// Text string comparable, sort able score
 		/// <see cref="http://open.mapquestapi.com/geocoding/geocodequality.html#granularity"/>
 		/// </summary>
 		[JsonProperty("geocodeQualityCode")]
@@ -82,7 +82,7 @@ namespace Geocoding.MapQuest
 		public OsmSideOfStreet SideOfStreet { get; set; }
 
 		/// <summary>
-		/// Url to a mapquest map
+		/// Url to a MapQuest map
 		/// </summary>
 		[JsonProperty("mapUrl")]
 		public Uri MapUrl { get; set; }
