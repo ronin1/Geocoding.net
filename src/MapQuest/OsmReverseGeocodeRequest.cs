@@ -37,5 +37,11 @@ namespace Geocoding.MapQuest
 				_loc = value;
 			}
 		}
+
+		[JsonIgnore]
+		public override string RequestAction
+		{
+			get { return "reverse"; }
+		}
 	}
 }

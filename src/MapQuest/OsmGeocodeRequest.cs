@@ -31,7 +31,7 @@ namespace Geocoding.MapQuest
 		/// Note input will be hashed for uniqueness.
 		/// Order is not guaranteed.
 		/// </summary>
-		[JsonProperty("location")]
+		[JsonProperty("locations")]
 		public ICollection<OsmLocationRequest> Locations
 		{
 			get { return _locations; }
@@ -50,6 +50,9 @@ namespace Geocoding.MapQuest
 			}
 		}
 
-		
+		public override string RequestAction
+		{
+			get { return "batch"; }
+		}
 	}
 }

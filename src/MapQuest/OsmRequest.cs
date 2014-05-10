@@ -30,7 +30,7 @@ namespace Geocoding.MapQuest
 			get { return _key; }
 			set
 			{
-				if (!string.IsNullOrWhiteSpace(value))
+				if (string.IsNullOrWhiteSpace(value))
 					throw new ArgumentException("An application key is required for MapQuest");
 
 				_key = value;
@@ -102,8 +102,10 @@ namespace Geocoding.MapQuest
 			get
 			{
 				var sb = new StringBuilder(BASE_PATH);
-				sb.Append("batch?");
-				sb.AppendFormat("key={0}&", Key); //no need to escape this key, it is already escaped by MapQuest at generation
+				sb.Append(RequestAction);
+				sb.Append("?");
+				//no need to escape this key, it is already escaped by MapQuest at generation
+				sb.AppendFormat("key={0}&", Key); 
 
 				if (!string.IsNullOrWhiteSpace(JsonpCallBack))
 					sb.AppendFormat("callback={0}&", HttpUtility.UrlEncode(JsonpCallBack));
@@ -114,9 +116,13 @@ namespace Geocoding.MapQuest
 				if (OutputFormat != OsmFormat.json)
 					sb.AppendFormat("outFormat={0}&", OutputFormat);
 
+				sb.Length--;
 				return new Uri(sb.ToString());
 			}
 		}
+
+		[JsonIgnore]
+		public abstract string RequestAction { get; }
 
 		[JsonIgnore]
 		string _verb = "POST";

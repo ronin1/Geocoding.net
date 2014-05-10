@@ -12,12 +12,12 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Geocoding.MapQuest.MapQuestGeocoder">
-    <Position X="0.5" Y="0.75" Width="2.75" />
+    <Position X="0.5" Y="0.75" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAACAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAACAACAAAAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>MapQuestGeocoder.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -40,18 +40,18 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAADAAAAAAAQFAACCAQEBAAAAAQAACAAQIgAAAAA=</HashCode>
+      <HashCode>AAAAAADAAAAAAAQFAACKAQEBAAAAAQAACAAQIgAAAAA=</HashCode>
       <FileName>OsmRequest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Geocoding.MapQuest.OsmGeocodeRequest">
-    <Position X="6" Y="6.5" Width="1.75" />
+    <Position X="6" Y="7" Width="1.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAIIAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>OsmGeocodeRequest.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -61,12 +61,12 @@
   <Class Name="Geocoding.MapQuest.OsmGeocoder">
     <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>OsmGeocoder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Geocoding.MapQuest.OsmLocationRequest">
-    <Position X="9" Y="6.5" Width="1.75" />
+    <Position X="9" Y="6.75" Width="1.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -83,12 +83,12 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAIIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>OsmReverseGeocodeRequest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Geocoding.MapQuest.OsmLocationType">
-    <Position X="0.75" Y="6" Width="1.5" />
+    <Position X="0.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJAAAAAAAAA=</HashCode>
       <FileName>OsmLocationType.cs</FileName>
@@ -102,14 +102,14 @@
     </TypeIdentifier>
   </Enum>
   <Enum Name="Geocoding.MapQuest.OsmQuality">
-    <Position X="0.75" Y="3" Width="1.5" />
+    <Position X="0.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QACAAAAAAAAAAAAAgAAAAIAABkAIAAAAAAAAACAAAAA=</HashCode>
       <FileName>OsmQuality.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Geocoding.MapQuest.OsmFormat">
-    <Position X="0.75" Y="7.5" Width="1.5" />
+    <Position X="0.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAABACAAAAAAA=</HashCode>
       <FileName>OsmFormat.cs</FileName>
