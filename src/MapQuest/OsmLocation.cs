@@ -27,7 +27,10 @@ namespace Geocoding.MapQuest
 		[JsonProperty("location")]
 		public override string FormattedAddress
 		{
-			get { return base.FormattedAddress; }
+			get 
+			{
+				return ToString();
+			}
 			set { base.FormattedAddress = value; }
 		}
 
@@ -61,8 +64,8 @@ namespace Geocoding.MapQuest
 
 		public override string ToString()
 		{
-			if (FormattedAddress != UNKNOWN)
-				return FormattedAddress;
+			if (base.FormattedAddress != UNKNOWN)
+				return base.FormattedAddress;
 			else
 			{
 				var sb = new StringBuilder();

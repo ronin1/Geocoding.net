@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
+using Xunit;
+using Xunit.Extensions;
+
 using Geocoding.MapQuest;
 
 namespace Geocoding.Tests
@@ -14,5 +17,6 @@ namespace Geocoding.Tests
 			string k = ConfigurationManager.AppSettings["mapQuestKey"];
 			return new MapQuestGeocoder(k);
 		}
+
 	}
 }
