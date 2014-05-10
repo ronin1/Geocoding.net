@@ -31,7 +31,7 @@ namespace Geocoding.MapQuest
 
 					foreach(OsmLocation l in o.Locations) 
 					{
-						if (o.ProvidedLocation == null)
+						if (!string.IsNullOrWhiteSpace(l.FormattedAddress) || o.ProvidedLocation == null)
 							continue;
 
 						if (string.Compare(o.ProvidedLocation.FormattedAddress, "unknown", true) != 0)

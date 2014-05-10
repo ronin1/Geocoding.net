@@ -13,6 +13,7 @@ namespace Geocoding.MapQuest
 	public class OsmLocation : ParsedAddress
 	{
 		const string UNKNOWN = "unknown";
+		static readonly string DEFAULT_LOC = new Location(0, 0).ToString();
 
 		public OsmLocation(string formattedAddress, Location coordinates)
 			: base(
@@ -60,7 +61,7 @@ namespace Geocoding.MapQuest
 
 		public override string ToString()
 		{
-			if (FormattedAddress == UNKNOWN)
+			if (FormattedAddress != UNKNOWN)
 				return FormattedAddress;
 			else
 			{
@@ -92,6 +93,8 @@ namespace Geocoding.MapQuest
 
 					return s;
 				}
+				else if (Coordinates != null && Coordinates.ToString() != DEFAULT_LOC)
+					return Coordinates.ToString();
 				else
 					return UNKNOWN;
 			}

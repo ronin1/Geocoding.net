@@ -49,45 +49,24 @@ namespace Geocoding.MapQuest
 		[JsonIgnore]
 		public virtual OsmFormat OutputFormat { get; private set; }
 
-		///// <summary>
-		///// A delimiter is used only when outFormat=csv. The delimiter is the single character used to separate the fields of a character delimited file. 
-		///// The delimiter defaults to a comma(,). 
-		///// The valid choices are ,|:;
-		///// </summary>
-		//[JsonProperty("delimiter")]
-		//public virtual char Delimiter { get; private set; }
-
 		[JsonIgnore]
-		int _maxResults = -1;
+		OsmRequestOptions op = new OsmRequestOptions();
 		/// <summary>
-		/// The number of results to limit the response to in the case of an ambiguous address.
-		/// Defaults: -1 (indicates no limit) 
+		/// Optional settings
 		/// </summary>
-		[JsonProperty("maxResults")]
-		public virtual int MaxResults
+		[JsonProperty("options")]
+		public virtual OsmRequestOptions Options 
 		{
-			get { return _maxResults; }
-			set { _maxResults = value > 0 ? value : -1; }
+			get { return op; }
+			protected set 
+			{
+				if (value == null)
+					throw new ArgumentNullException("Options");
+
+				op = value; 
+			} 
 		}
-
-		/// <summary>
-		/// This parameter tells the service whether it should return a URL to a static map thumbnail image for a location being geocoded.
-		/// </summary>
-		[JsonProperty("thumbMaps")]
-		public virtual bool ThumbMap { get; set; }
-
-		/// <summary>
-		/// This option tells the service whether it should fail when given a latitude/longitude pair in an address or batch geocode call, or if it should ignore that and try and geo-code what it can.
-		/// </summary>
-		[JsonProperty("ignoreLatLngInput")]
-		public virtual bool IgnoreLatLngInput { get; set; }
-
-		/// <summary>
-		/// Optional name of JSONP callback method.
-		/// </summary>
-		[JsonIgnore]
-		public virtual string JsonpCallBack { get; set; }
-
+		
 		/// <summary>
 		/// We are using v1 of MapQuest OSM API
 		/// </summary>
@@ -106,9 +85,6 @@ namespace Geocoding.MapQuest
 				sb.Append("?");
 				//no need to escape this key, it is already escaped by MapQuest at generation
 				sb.AppendFormat("key={0}&", Key); 
-
-				if (!string.IsNullOrWhiteSpace(JsonpCallBack))
-					sb.AppendFormat("callback={0}&", HttpUtility.UrlEncode(JsonpCallBack));
 
 				if (InputFormat != OsmFormat.json)
 					sb.AppendFormat("inFormat={0}&", InputFormat);

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="OsmFormat.cs" />
     <Compile Include="OsmGeocoder.cs" />
+    <Compile Include="OsmBatchGeocodeRequest.cs" />
     <Compile Include="OsmGeocodeRequest.cs" />
     <Compile Include="OsmLocationRequest.cs" />
     <Compile Include="OsmRequest.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="OsmException.cs" />
     <Compile Include="OsmOptions.cs" />
     <Compile Include="OsmQuality.cs" />
+    <Compile Include="OsmRequestOptions.cs" />
     <Compile Include="OsmResponse.cs" />
     <Compile Include="OsmResult.cs" />
     <Compile Include="OsmReverseGeocodeRequest.cs" />

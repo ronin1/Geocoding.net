@@ -14,11 +14,6 @@ namespace Geocoding.MapQuest
 
 		}
 
-		//public OsmReverseGeocodeRequest(string key, string address)
-		//	: this(key, new OsmLocationRequest(address))
-		//{
-		//}
-
 		public OsmReverseGeocodeRequest(string key, Location loc) 
 			: this(key, new OsmLocationRequest(loc))
 		{

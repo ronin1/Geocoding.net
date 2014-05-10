@@ -49,7 +49,7 @@ namespace Geocoding.MapQuest
 			if (string.IsNullOrWhiteSpace(address))
 				throw new ArgumentException("address can not be null or empty!");
 
-			var f = new OsmGeocodeRequest(key, address) { };
+			var f = new OsmGeocodeRequest(key, address);
 			OsmResponse res = osmlogic.Execute(f);
 			return HandleSingleResponse(res);
 		}
