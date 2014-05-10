@@ -15,6 +15,6 @@ namespace Geocoding.MapQuest
 		public IList<OsmLocation> Locations { get; set; }
 
 		[JsonProperty("providedLocation")]
-		public OsmProvidedLocation ProvidedLocation { get; set; }
+		public OsmLocation ProvidedLocation { get; set; }
 	}
 }

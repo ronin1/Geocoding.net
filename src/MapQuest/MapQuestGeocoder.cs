@@ -14,16 +14,16 @@ namespace Geocoding.MapQuest
 	/// </remarks>
 	public class MapQuestGeocoder : IGeocoder
 	{
-		readonly OsmGeocoder _osmlogic;
-		readonly string _key;
+		readonly OsmGeocoder osmlogic;
+		readonly string key;
 
 		public MapQuestGeocoder(string key)
 		{
 			if (string.IsNullOrWhiteSpace(key))
 				throw new ArgumentException("key can not be null or blank");
 
-			_key = key;
-			_osmlogic = new OsmGeocoder();
+			this.key = key;
+			osmlogic = new OsmGeocoder();
 		}
 
 		IEnumerable<Address> HandleSingleResponse(OsmResponse res)
@@ -49,8 +49,8 @@ namespace Geocoding.MapQuest
 			if (string.IsNullOrWhiteSpace(address))
 				throw new ArgumentException("address can not be null or empty!");
 
-			var f = new OsmGeocodeRequest(_key, address) { };
-			OsmResponse res = _osmlogic.Execute(f);
+			var f = new OsmGeocodeRequest(key, address) { };
+			OsmResponse res = osmlogic.Execute(f);
 			return HandleSingleResponse(res);
 		}
 
@@ -86,8 +86,8 @@ namespace Geocoding.MapQuest
 			if (location == null)
 				throw new ArgumentNullException ("location");
 
-			var f = new OsmReverseGeocodeRequest(_key, location);
-			OsmResponse res = _osmlogic.Execute(f);
+			var f = new OsmReverseGeocodeRequest(key, location);
+			OsmResponse res = osmlogic.Execute(f);
 			return HandleSingleResponse(res);
 		}
 

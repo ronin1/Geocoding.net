@@ -61,7 +61,6 @@
     <Compile Include="MapQuestGeocoder.cs" />
     <Compile Include="OsmException.cs" />
     <Compile Include="OsmOptions.cs" />
-    <Compile Include="OsmProvidedLocation.cs" />
     <Compile Include="OsmQuality.cs" />
     <Compile Include="OsmResponse.cs" />
     <Compile Include="OsmResult.cs" />

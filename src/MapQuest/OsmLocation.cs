@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -11,14 +12,22 @@ namespace Geocoding.MapQuest
 	/// </summary>
 	public class OsmLocation : ParsedAddress
 	{
-		protected OsmLocation()
-			: this("unknown", new Location(0, 0))
-		{
-		}
+		const string UNKNOWN = "unknown";
+
 		public OsmLocation(string formattedAddress, Location coordinates)
-			: base(formattedAddress, coordinates, "MapQuest")
+			: base(
+				string.IsNullOrWhiteSpace(formattedAddress) ? UNKNOWN : formattedAddress, 
+				coordinates ?? new Location(0, 0), 
+				"MapQuest")
 		{
 			DisplayCoordinates = coordinates;
+		}
+
+		[JsonProperty("location")]
+		public override string FormattedAddress
+		{
+			get { return base.FormattedAddress; }
+			set { base.FormattedAddress = value; }
 		}
 
 		[JsonProperty("latLng")]
@@ -48,6 +57,45 @@ namespace Geocoding.MapQuest
 
 		[JsonProperty("postalCode")]
 		public override string PostCode { get; set; }
+
+		public override string ToString()
+		{
+			if (FormattedAddress == UNKNOWN)
+				return FormattedAddress;
+			else
+			{
+				var sb = new StringBuilder();
+				if (!string.IsNullOrWhiteSpace(Street))
+					sb.AppendFormat("{0}, ", Street);
+
+				if (!string.IsNullOrWhiteSpace(City))
+					sb.AppendFormat("{0}, ", City);
+
+				if (!string.IsNullOrWhiteSpace(State))
+					sb.AppendFormat("{0} ", State);
+				else if (!string.IsNullOrWhiteSpace(County))
+					sb.AppendFormat("{0} ", County);
+
+				if (!string.IsNullOrWhiteSpace(PostCode))
+					sb.AppendFormat("{0} ", PostCode);
+
+				if (!string.IsNullOrWhiteSpace(Country))
+					sb.AppendFormat("{0} ", Country);
+
+				if (sb.Length > 1)
+				{
+					sb.Length--;
+
+					string s = sb.ToString();
+					if (s.Last() == ',')
+						s = s.Remove(s.Length - 1);
+
+					return s;
+				}
+				else
+					return UNKNOWN;
+			}
+		}
 
 		/// <summary>
 		/// Type of location

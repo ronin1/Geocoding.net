@@ -13,18 +13,44 @@ namespace Geocoding.MapQuest
 			Street = street;
 		}
 
+		public OsmLocationRequest(Location location)
+		{
+			Location = location;
+		}
+
 		[JsonIgnore]
-		string _street;
-		[JsonProperty("street")]
+		string street;
+		/// <summary>
+		/// Full street address or intersection for geocoding
+		/// </summary>
+		[JsonProperty("street", NullValueHandling = NullValueHandling.Ignore)]
 		public virtual string Street
 		{
-			get { return _street; }
+			get { return street; }
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new ArgumentException("Street can not be null or blank");
 
-				_street = value;
+				street = value;
+			}
+		}
+
+		[JsonIgnore]
+		Location location;
+		/// <summary>
+		/// Latitude and longitude for reverse geocoding
+		/// </summary>
+		[JsonProperty("latLng", NullValueHandling=NullValueHandling.Ignore)]
+		public virtual Location Location
+		{
+			get { return location; }
+			set
+			{
+				if (value == null)
+					throw new ArgumentNullException("Location");
+
+				location = value;
 			}
 		}
 

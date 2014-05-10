@@ -34,7 +34,10 @@ namespace Geocoding.MapQuest
 						if (o.ProvidedLocation == null)
 							continue;
 
-						l.FormattedAddress = o.ProvidedLocation.Location;
+						if (string.Compare(o.ProvidedLocation.FormattedAddress, "unknown", true) != 0)
+							l.FormattedAddress = o.ProvidedLocation.FormattedAddress;
+						else
+							l.FormattedAddress = o.ProvidedLocation.ToString();
 					}
 				}
 			}

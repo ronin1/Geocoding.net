@@ -19,7 +19,7 @@ namespace Geocoding.MapQuest
 		}
 
 		[JsonIgnore]
-		string _key;
+		string key;
 		/// <summary>
 		/// A REQUIRED unique key to authorize use of the Routing Service.
 		/// <see cref="http://developer.mapquest.com/"/>
@@ -27,13 +27,13 @@ namespace Geocoding.MapQuest
 		[JsonIgnore]
 		public virtual string Key
 		{
-			get { return _key; }
+			get { return key; }
 			set
 			{
 				if (string.IsNullOrWhiteSpace(value))
 					throw new ArgumentException("An application key is required for MapQuest");
 
-				_key = value;
+				key = value;
 			}
 		}
 

@@ -13,6 +13,7 @@ namespace Geocoding.MapQuest
 			: base(key)
 		{
 			Locations = new[] { new OsmLocationRequest(location) };
+			IgnoreLatLngInput = true; //defaults to true
 		}
 
 		public OsmGeocodeRequest(string key, ICollection<string> locations) 

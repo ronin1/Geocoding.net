@@ -14,27 +14,37 @@ namespace Geocoding.MapQuest
 
 		}
 
+		//public OsmReverseGeocodeRequest(string key, string address)
+		//	: this(key, new OsmLocationRequest(address))
+		//{
+		//}
+
 		public OsmReverseGeocodeRequest(string key, Location loc) 
+			: this(key, new OsmLocationRequest(loc))
+		{
+		}
+
+		public OsmReverseGeocodeRequest(string key, OsmLocationRequest loc)
 			: base(key)
 		{
 			Location = loc;
 		}
 
 		[JsonIgnore]
-		Location _loc;
+		OsmLocationRequest loc;
 		/// <summary>
 		/// Latitude and longitude for the request
 		/// </summary>
 		[JsonProperty("location")]
-		public virtual Location Location 
+		public virtual OsmLocationRequest Location 
 		{
-			get { return _loc; }
+			get { return loc; }
 			set
 			{
 				if (value == null)
 					throw new ArgumentNullException("Location");
 
-				_loc = value;
+				loc = value;
 			}
 		}
 
