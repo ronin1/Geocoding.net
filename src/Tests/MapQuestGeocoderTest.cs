@@ -18,5 +18,10 @@ namespace Geocoding.Tests
 			return new MapQuestGeocoder(k);
 		}
 
+		[Fact(Skip="Will not work for MapQuest None OSM")]
+		public override void ShouldNotBlowUpOnBadAddress()
+		{
+			base.ShouldNotBlowUpOnBadAddress();
+		}
 	}
 }

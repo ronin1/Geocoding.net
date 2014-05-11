@@ -66,11 +66,25 @@ namespace Geocoding.MapQuest
 				op = value; 
 			} 
 		}
-		
+
+		/// <summary>
+		/// if true, use Open Street Map, else use commercial map
+		/// </summary>
+		public virtual bool UseOSM { get; set; }
+
 		/// <summary>
 		/// We are using v1 of MapQuest OSM API
 		/// </summary>
-		protected static string BASE_PATH = @"http://open.mapquestapi.com/geocoding/v1/";
+		protected virtual string BaseRequestPath
+		{
+			get 
+			{
+				if (UseOSM)
+					return @"http://open.mapquestapi.com/geocoding/v1/";
+				else
+					return @"http://www.mapquestapi.com/geocoding/v1/";
+			}
+		}
 
 		/// <summary>
 		/// The full path for the request
@@ -80,7 +94,7 @@ namespace Geocoding.MapQuest
 		{
 			get
 			{
-				var sb = new StringBuilder(BASE_PATH);
+				var sb = new StringBuilder(BaseRequestPath);
 				sb.Append(RequestAction);
 				sb.Append("?");
 				//no need to escape this key, it is already escaped by MapQuest at generation

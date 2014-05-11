@@ -17,6 +17,16 @@ namespace Geocoding.MapQuest
 		readonly OsmGeocoder osmlogic;
 		readonly string key;
 
+		volatile bool useOSM;
+		/// <summary>
+		/// When true, will use the Open Street Map API
+		/// </summary>
+		public virtual bool UseOSM
+		{
+			get { return useOSM; }
+			set { useOSM = value; }
+		}
+
 		public MapQuestGeocoder(string key)
 		{
 			if (string.IsNullOrWhiteSpace(key))
@@ -49,7 +59,7 @@ namespace Geocoding.MapQuest
 			if (string.IsNullOrWhiteSpace(address))
 				throw new ArgumentException("address can not be null or empty!");
 
-			var f = new OsmGeocodeRequest(key, address);
+			var f = new OsmGeocodeRequest(key, address) { UseOSM = this.UseOSM };
 			OsmResponse res = osmlogic.Execute(f);
 			return HandleSingleResponse(res);
 		}
@@ -86,7 +96,7 @@ namespace Geocoding.MapQuest
 			if (location == null)
 				throw new ArgumentNullException ("location");
 
-			var f = new OsmReverseGeocodeRequest(key, location);
+			var f = new OsmReverseGeocodeRequest(key, location) { UseOSM = this.UseOSM };
 			OsmResponse res = osmlogic.Execute(f);
 			return HandleSingleResponse(res);
 		}

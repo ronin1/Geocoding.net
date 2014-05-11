@@ -107,44 +107,44 @@ namespace Geocoding.MapQuest
 		/// Type of location
 		/// </summary>
 		[JsonProperty("type")]
-		public OsmLocationType Type { get; set; }
+		public virtual OsmLocationType Type { get; set; }
 
 		/// <summary>
 		/// Granularity code of quality/accuracy guarantee
 		/// <see cref="http://open.mapquestapi.com/geocoding/geocodequality.html#granularity"/>
 		/// </summary>
 		[JsonProperty("geocodeQuality")]
-		public OsmQuality Quality { get; set; }
+		public virtual OsmQuality Quality { get; set; }
 
 		/// <summary>
 		/// Text string comparable, sort able score
 		/// <see cref="http://open.mapquestapi.com/geocoding/geocodequality.html#granularity"/>
 		/// </summary>
 		[JsonProperty("geocodeQualityCode")]
-		public string Confidence { get; set; }
+		public virtual string Confidence { get; set; }
 
 		/// <summary>
 		/// Identifies the closest road to the address for routing purposes.
 		/// </summary>
 		[JsonProperty("linkId")]
-		public long LinkId { get; set; }
+		public virtual string LinkId { get; set; }
 
 		/// <summary>
 		/// Which side of the street this address is in
 		/// </summary>
 		[JsonProperty("sideOfStreet")]
-		public OsmSideOfStreet SideOfStreet { get; set; }
+		public virtual OsmSideOfStreet SideOfStreet { get; set; }
 
 		/// <summary>
 		/// Url to a MapQuest map
 		/// </summary>
 		[JsonProperty("mapUrl")]
-		public Uri MapUrl { get; set; }
+		public virtual Uri MapUrl { get; set; }
 
 		[JsonProperty("adminArea1Type")]
-		public string CountryLabel { get; set; }
+		public virtual string CountryLabel { get; set; }
 
 		[JsonProperty("adminArea3Type")]
-		public string StateLabel { get; set; }
+		public virtual string StateLabel { get; set; }
 	}
 }

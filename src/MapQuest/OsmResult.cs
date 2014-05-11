@@ -11,7 +11,6 @@ namespace Geocoding.MapQuest
 	public class OsmResult
 	{
 		[JsonProperty("locations")]
-		//[JsonArray(AllowNullItems=true,ItemIsReference=true)]
 		public IList<OsmLocation> Locations { get; set; }
 
 		[JsonProperty("providedLocation")]

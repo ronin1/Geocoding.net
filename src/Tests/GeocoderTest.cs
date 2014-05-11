@@ -59,14 +59,15 @@ namespace Geocoding.Tests
 		[Fact]
 		public virtual void ShouldNotBlowUpOnBadAddress()
 		{
-			Address[] addresses = geocoder.Geocode("sdlkf;jasl;kjfldksjfasldf").ToArray();
+			Address[] addresses = geocoder.Geocode("sdlkf;jasl;kjfldksj,fasldf").ToArray();
 			Assert.Empty(addresses);
 		}
 
-		[Fact]
-		public virtual void CanGeocodeWithSpecialCharacters()
+		[Theory]
+		[InlineData("Fried St & 2nd St, Gretna, LA 70053")]
+		public virtual void CanGeocodeWithSpecialCharacters(string address)
 		{
-			Address[] addresses = geocoder.Geocode("Fried St & 2nd St, Gretna, LA 70053").ToArray();
+			Address[] addresses = geocoder.Geocode(address).ToArray();
 
 			//asserting no exceptions are thrown and that we get something
 			Assert.NotEmpty(addresses);
