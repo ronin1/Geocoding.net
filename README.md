@@ -8,7 +8,8 @@ Includes a model and interface for communicating with three popular Geocoding pr
   
 This fork adds:
   
-  * [MapQuest Open (OpenStreetMap)](http://open.mapquestapi.com/) - [docs](http://open.mapquestapi.com/geocoding/)
+  * MapQuest [(Comercial API)](http://www.mapquestapi.com/) - [docs](http://www.mapquestapi.com/geocoding/)
+  * MapQuest [(OpenStreetMap)](http://open.mapquestapi.com/) - [docs](http://open.mapquestapi.com/geocoding/)
   * Mono compatibility
   
 The API returns latitude/longitude coordinates and normalized address information.  This can be used to perform address validation, real time mapping of user-entered addresses, distance calculations, and much more.
@@ -61,7 +62,7 @@ Bing [requires an API key](http://msdn.microsoft.com/en-us/library/ff428642.aspx
 
 You will need a [consumer secret and consumer key](http://developer.yahoo.com/boss/geo/BOSS_Signup.pdf) (PDF) for Yahoo.
 
-MapQuest OSM API requires a key. Sign up here: (http://developer.mapquest.com/web/products/open)
+MapQuest API requires a key. Sign up here: (http://developer.mapquest.com/web/products/open)
 
 ##How to Build from Source
 
