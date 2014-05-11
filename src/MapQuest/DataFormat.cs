@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Geocoding.MapQuest
 {
-	public enum OsmFormat
+	public enum DataFormat
 	{
 		json,
 		xml,

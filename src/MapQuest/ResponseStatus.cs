@@ -2,7 +2,7 @@ using System;
 
 namespace Geocoding.MapQuest
 {
-	public enum OsmResponseStatus : int
+	public enum ResponseStatus : int
 	{
 		Ok = 0,
 		OkBatch = 100,

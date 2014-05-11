@@ -6,14 +6,14 @@ using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
 {
-	public class OsmLocationRequest
+	public class LocationRequest
 	{
-		public OsmLocationRequest(string street)
+		public LocationRequest(string street)
 		{
 			Street = street;
 		}
 
-		public OsmLocationRequest(Location location)
+		public LocationRequest(Location location)
 		{
 			Location = location;
 		}

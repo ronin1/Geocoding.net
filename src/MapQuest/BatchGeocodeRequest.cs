@@ -7,26 +7,26 @@ using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
 {
-	public class OsmBatchGeocodeRequest : OsmRequest
+	public class BatchGeocodeRequest : BaseRequest
 	{
-		public OsmBatchGeocodeRequest(string key, ICollection<string> locations) 
+		public BatchGeocodeRequest(string key, ICollection<string> locations) 
 			: base(key) 
 		{
 			if (locations.IsNullOrEmpty())
 				throw new ArgumentException("locations can not be null or empty");
 
-			Locations = (from l in locations select new OsmLocationRequest(l)).ToArray();
+			Locations = (from l in locations select new LocationRequest(l)).ToArray();
 		}
 
 		[JsonIgnore]
-		readonly List<OsmLocationRequest> _locations = new List<OsmLocationRequest>();
+		readonly List<LocationRequest> _locations = new List<LocationRequest>();
 		/// <summary>
 		/// Required collection of concatenated address string
 		/// Note input will be hashed for uniqueness.
 		/// Order is not guaranteed.
 		/// </summary>
 		[JsonProperty("locations")]
-		public ICollection<OsmLocationRequest> Locations
+		public ICollection<LocationRequest> Locations
 		{
 			get { return _locations; }
 			set

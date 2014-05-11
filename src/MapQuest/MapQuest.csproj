@@ -50,25 +50,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OsmFormat.cs" />
-    <Compile Include="OsmGeocoder.cs" />
-    <Compile Include="OsmBatchGeocodeRequest.cs" />
-    <Compile Include="OsmGeocodeRequest.cs" />
-    <Compile Include="OsmLocationRequest.cs" />
-    <Compile Include="OsmRequest.cs" />
-    <Compile Include="OsmInfo.cs" />
-    <Compile Include="OsmLocation.cs" />
-    <Compile Include="OsmLocationType.cs" />
+    <Compile Include="DataFormat.cs" />
+    <Compile Include="BatchGeocodeRequest.cs" />
+    <Compile Include="GeocodeRequest.cs" />
+    <Compile Include="LocationRequest.cs" />
+    <Compile Include="BaseRequest.cs" />
+    <Compile Include="ResponseInfo.cs" />
+    <Compile Include="MapQuestLocation.cs" />
+    <Compile Include="LocationType.cs" />
     <Compile Include="MapQuestGeocoder.cs" />
-    <Compile Include="OsmException.cs" />
-    <Compile Include="OsmOptions.cs" />
-    <Compile Include="OsmQuality.cs" />
-    <Compile Include="OsmRequestOptions.cs" />
-    <Compile Include="OsmResponse.cs" />
-    <Compile Include="OsmResult.cs" />
-    <Compile Include="OsmReverseGeocodeRequest.cs" />
-    <Compile Include="OsmSideOfStreet.cs" />
-    <Compile Include="OsmResponseStatus.cs" />
+    <Compile Include="Quality.cs" />
+    <Compile Include="RequestOptions.cs" />
+    <Compile Include="MapQuestResponse.cs" />
+    <Compile Include="MapQuestResult.cs" />
+    <Compile Include="ReverseGeocodeRequest.cs" />
+    <Compile Include="SideOfStreet.cs" />
+    <Compile Include="ResponseStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

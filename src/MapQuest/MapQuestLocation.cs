@@ -10,12 +10,12 @@ namespace Geocoding.MapQuest
 	/// MapQuest address obj.
 	/// <see cref="http://open.mapquestapi.com/geocoding/"/>
 	/// </summary>
-	public class OsmLocation : ParsedAddress
+	public class MapQuestLocation : ParsedAddress
 	{
 		const string UNKNOWN = "unknown";
 		static readonly string DEFAULT_LOC = new Location(0, 0).ToString();
 
-		public OsmLocation(string formattedAddress, Location coordinates)
+		public MapQuestLocation(string formattedAddress, Location coordinates)
 			: base(
 				string.IsNullOrWhiteSpace(formattedAddress) ? UNKNOWN : formattedAddress, 
 				coordinates ?? new Location(0, 0), 
@@ -107,14 +107,14 @@ namespace Geocoding.MapQuest
 		/// Type of location
 		/// </summary>
 		[JsonProperty("type")]
-		public virtual OsmLocationType Type { get; set; }
+		public virtual LocationType Type { get; set; }
 
 		/// <summary>
 		/// Granularity code of quality/accuracy guarantee
 		/// <see cref="http://open.mapquestapi.com/geocoding/geocodequality.html#granularity"/>
 		/// </summary>
 		[JsonProperty("geocodeQuality")]
-		public virtual OsmQuality Quality { get; set; }
+		public virtual Quality Quality { get; set; }
 
 		/// <summary>
 		/// Text string comparable, sort able score
@@ -133,7 +133,7 @@ namespace Geocoding.MapQuest
 		/// Which side of the street this address is in
 		/// </summary>
 		[JsonProperty("sideOfStreet")]
-		public virtual OsmSideOfStreet SideOfStreet { get; set; }
+		public virtual SideOfStreet SideOfStreet { get; set; }
 
 		/// <summary>
 		/// Url to a MapQuest map

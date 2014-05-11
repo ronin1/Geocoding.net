@@ -8,12 +8,12 @@ namespace Geocoding.MapQuest
 	/// <summary>
 	/// Result obj returned in a collection of OSM response under the property: results
 	/// </summary>
-	public class OsmResult
+	public class MapQuestResult
 	{
 		[JsonProperty("locations")]
-		public IList<OsmLocation> Locations { get; set; }
+		public IList<MapQuestLocation> Locations { get; set; }
 
 		[JsonProperty("providedLocation")]
-		public OsmLocation ProvidedLocation { get; set; }
+		public MapQuestLocation ProvidedLocation { get; set; }
 	}
 }

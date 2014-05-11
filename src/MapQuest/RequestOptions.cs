@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
 {
-	public class OsmRequestOptions
+	public class RequestOptions
 	{
 		///// <summary>
 		///// A delimiter is used only when outFormat=csv. The delimiter is the single character used to separate the fields of a character delimited file. 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Geocoding.MapQuest
 {
-	public enum OsmQuality : int
+	public enum Quality : int
 	{
 		/// <summary>
 		/// P1	A specific point location.

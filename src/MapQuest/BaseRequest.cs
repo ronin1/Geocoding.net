@@ -11,9 +11,9 @@ namespace Geocoding.MapQuest
 	/// Geo-code request object
 	/// <see cref="http://open.mapquestapi.com/geocoding/"/>
 	/// </summary>
-	public abstract class OsmRequest
+	public abstract class BaseRequest
 	{
-		protected OsmRequest(string key) //output only, no need for default ctor
+		protected BaseRequest(string key) //output only, no need for default ctor
 		{
 			Key = key;
 		}
@@ -41,21 +41,21 @@ namespace Geocoding.MapQuest
 		/// Defaults to json
 		/// </summary>
 		[JsonIgnore]
-		public virtual OsmFormat InputFormat { get; private set; }
+		public virtual DataFormat InputFormat { get; private set; }
 
 		/// <summary>
 		/// Defaults to json
 		/// </summary>
 		[JsonIgnore]
-		public virtual OsmFormat OutputFormat { get; private set; }
+		public virtual DataFormat OutputFormat { get; private set; }
 
 		[JsonIgnore]
-		OsmRequestOptions op = new OsmRequestOptions();
+		RequestOptions op = new RequestOptions();
 		/// <summary>
 		/// Optional settings
 		/// </summary>
 		[JsonProperty("options")]
-		public virtual OsmRequestOptions Options 
+		public virtual RequestOptions Options 
 		{
 			get { return op; }
 			protected set 
@@ -100,10 +100,10 @@ namespace Geocoding.MapQuest
 				//no need to escape this key, it is already escaped by MapQuest at generation
 				sb.AppendFormat("key={0}&", Key); 
 
-				if (InputFormat != OsmFormat.json)
+				if (InputFormat != DataFormat.json)
 					sb.AppendFormat("inFormat={0}&", InputFormat);
 
-				if (OutputFormat != OsmFormat.json)
+				if (OutputFormat != DataFormat.json)
 					sb.AppendFormat("outFormat={0}&", OutputFormat);
 
 				sb.Length--;

@@ -6,32 +6,32 @@ using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
 {
-	public class OsmReverseGeocodeRequest : OsmRequest
+	public class ReverseGeocodeRequest : BaseRequest
 	{
-		public OsmReverseGeocodeRequest(string key, double latitude, double longitude)
+		public ReverseGeocodeRequest(string key, double latitude, double longitude)
 			: this(key, new Location(latitude, longitude))
 		{
 
 		}
 
-		public OsmReverseGeocodeRequest(string key, Location loc) 
-			: this(key, new OsmLocationRequest(loc))
+		public ReverseGeocodeRequest(string key, Location loc) 
+			: this(key, new LocationRequest(loc))
 		{
 		}
 
-		public OsmReverseGeocodeRequest(string key, OsmLocationRequest loc)
+		public ReverseGeocodeRequest(string key, LocationRequest loc)
 			: base(key)
 		{
 			Location = loc;
 		}
 
 		[JsonIgnore]
-		OsmLocationRequest loc;
+		LocationRequest loc;
 		/// <summary>
 		/// Latitude and longitude for the request
 		/// </summary>
 		[JsonProperty("location")]
-		public virtual OsmLocationRequest Location 
+		public virtual LocationRequest Location 
 		{
 			get { return loc; }
 			set

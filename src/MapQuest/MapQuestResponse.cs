@@ -5,16 +5,16 @@ using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
 {
-	public class OsmResponse
+	public class MapQuestResponse
 	{
 		//[JsonArray(AllowNullItems=true)]
 		[JsonProperty("results")]
-		public IList<OsmResult> Results { get; set; }
+		public IList<MapQuestResult> Results { get; set; }
 
 		[JsonProperty("options")]
-		public OsmOptions Options { get; set; }
+		public RequestOptions Options { get; set; }
 
 		[JsonProperty("info")]
-		public OsmInfo Info { get; set; }
+		public ResponseInfo Info { get; set; }
 	}
 }

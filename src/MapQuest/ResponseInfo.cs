@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
 {
-	public class OsmInfo
+	public class ResponseInfo
 	{
 		/// <summary>
 		/// Extended copyright info
@@ -19,7 +19,7 @@ namespace Geocoding.MapQuest
 		/// Maps to HTTP response code generally
 		/// </summary>
 		[JsonProperty("statuscode")]
-		public OsmResponseStatus Status { get; set; }
+		public ResponseStatus Status { get; set; }
 
 		/// <summary>
 		/// Error or status messages if applicable

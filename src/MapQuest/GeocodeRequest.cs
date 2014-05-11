@@ -6,14 +6,14 @@ using Newtonsoft.Json;
 
 namespace Geocoding.MapQuest
 {
-	public class OsmGeocodeRequest : OsmReverseGeocodeRequest
+	public class GeocodeRequest : ReverseGeocodeRequest
 	{
-		public OsmGeocodeRequest(string key, string address)
-			: this(key, new OsmLocationRequest(address))
+		public GeocodeRequest(string key, string address)
+			: this(key, new LocationRequest(address))
 		{
 		}
 
-		public OsmGeocodeRequest(string key, OsmLocationRequest loc) 
+		public GeocodeRequest(string key, LocationRequest loc) 
 			: base(key, loc)
 		{
 		}
