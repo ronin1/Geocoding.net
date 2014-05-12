@@ -12,7 +12,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Geocoding.MapQuest.MapQuestGeocoder">
-    <Position X="1" Y="0.75" Width="2.5" />
+    <Position X="0.5" Y="0.75" Width="3" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
