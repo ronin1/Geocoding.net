@@ -12,7 +12,7 @@ namespace Geocoding.MapQuest
 	/// <see cref="http://open.mapquestapi.com/geocoding/"/>
 	/// <seealso cref="http://developer.mapquest.com/"/>
 	/// </remarks>
-	public class MapQuestGeocoder : IGeocoder
+	public class MapQuestGeocoder : IGeocoder, IBatchGeocoder
 	{
 		readonly string key;
 
@@ -38,9 +38,22 @@ namespace Geocoding.MapQuest
 		{
 			if (res != null && !res.Results.IsNullOrEmpty())
 			{
-				return from r in res.Results
-					   where r != null && !r.Locations.IsNullOrEmpty()
-					   from l in r.Locations
+				return HandleSingleResponse(from r in res.Results
+											where r != null && !r.Locations.IsNullOrEmpty()
+											from l in r.Locations
+											select l);
+			}
+			else
+				return new Address[0];
+		}
+
+		IEnumerable<Address> HandleSingleResponse(IEnumerable<MapQuestLocation> locs)
+		{
+			if (locs == null)
+				return new Address[0];
+			else
+			{
+				return from l in locs
 					   where l != null
 					   let q = (int)l.Quality
 					   let c = string.IsNullOrWhiteSpace(l.Confidence) ? "ZZZZZZ" : l.Confidence
@@ -48,8 +61,6 @@ namespace Geocoding.MapQuest
 					   orderby c ascending
 					   select l;
 			}
-			else
-				return new Address[0];
 		}
 
 		public IEnumerable<Address> Geocode(string address)
@@ -215,6 +226,42 @@ namespace Geocoding.MapQuest
 					throw new HttpException((int)response.StatusCode, sb.ToString());
 				}
 			}
+		}
+
+		public ICollection<ResultItem> Geocode(IEnumerable<string> addresses)
+		{
+			if (addresses == null)
+				throw new ArgumentNullException("addresses");
+
+			string[] adr = (from a in addresses
+							where !string.IsNullOrWhiteSpace(a)
+							group a by a into ag
+							select ag.Key).ToArray();
+			if (adr.IsNullOrEmpty())
+				throw new ArgumentException("Atleast one none blank item is required in addresses");
+
+			var f = new BatchGeocodeRequest(key, adr);
+			MapQuestResponse res = Execute(f);
+			return HandleBatchResponse(res);
+		}
+
+		ICollection<ResultItem> HandleBatchResponse(MapQuestResponse res)
+		{
+			if (res != null && !res.Results.IsNullOrEmpty())
+			{
+				return (from r in res.Results
+						where r != null && !r.Locations.IsNullOrEmpty()
+						let resp = HandleSingleResponse(r.Locations)
+						where resp != null
+						select new ResultItem(r.ProvidedLocation, resp)).ToArray();
+			}
+			else
+				return new ResultItem[0];
+		}
+
+		public ICollection<ResultItem> ReverseGeocode(IEnumerable<Location> locations)
+		{
+			throw new InvalidOperationException("ReverseGeocode(...) is not available for MapQuestGeocoder.");
 		}
 	}
 }

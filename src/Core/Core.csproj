@@ -74,10 +74,12 @@
     <Compile Include="DistanceUnits.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IAsyncGeocoder.cs" />
+    <Compile Include="IBatchGeocoder.cs" />
     <Compile Include="IGeocoder.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="ParsedAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\geocoding.nuspec">

@@ -9,13 +9,13 @@ namespace Geocoding.MapQuest
 {
 	public class BatchGeocodeRequest : BaseRequest
 	{
-		public BatchGeocodeRequest(string key, ICollection<string> locations) 
+		public BatchGeocodeRequest(string key, ICollection<string> addresses) 
 			: base(key) 
 		{
-			if (locations.IsNullOrEmpty())
-				throw new ArgumentException("locations can not be null or empty");
+			if (addresses.IsNullOrEmpty())
+				throw new ArgumentException("addresses can not be null or empty");
 
-			Locations = (from l in locations select new LocationRequest(l)).ToArray();
+			Locations = (from l in addresses select new LocationRequest(l)).ToArray();
 		}
 
 		[JsonIgnore]
